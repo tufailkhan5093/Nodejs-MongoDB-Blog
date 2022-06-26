@@ -1,0 +1,51 @@
+<% layout('welcome') -%>
+    <!-- ======= Business Category Section ======= -->
+    <section class="category-section">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row mb-2">
+                <% for (var i=0; i < blogs.length; i++) { %>
+                    <div class="col-md-3">
+                        <div class="card" style="width: 20rem;">
+                            <img class="card-img-top" src="<%= blogs[i].image %>" alt="<%= blogs[i].image %>">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= blogs[i].title %>
+                                </h5>
+                                <p class="card-text">
+                                    <%= blogs[i].description %>
+                                </p>
+                                <span>Posted By : <b>
+                                        <%= blogs[i].user_name %>
+                                    </b></span>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <form action="/blog_detail" method="POST">
+                                            <input hidden value="<%= blogs[i].id %>" name="id">
+                                            <button type="submit" class="btn btn-success">Read More</>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <form action="/edit_blog" method="POST">
+                                            <input hidden value="<%= blogs[i].id %>" name="id">
+                                            <button type="submit" class="btn btn-info">Edit</>
+                                        </form>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <form action="/delete_blog" method="POST">
+                                            <input hidden value="<%= blogs[i].id %>" name="id">
+                                            <button type="submit" class="btn btn-danger">Delete</>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% } %>
+
+
+
+            </div>
+
+        </div>
+    </section><!-- End Business Category Section -->
